@@ -1,6 +1,6 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai"
-const fs = require("fs");
+import fs from 'fs';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
