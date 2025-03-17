@@ -1,8 +1,6 @@
-import { TextGeneratorIa } from "nightback-ia-integration";
+import { IaText } from "nightback-ia-integration";
 
 function main() {
-  TextGeneratorIa("gemini-2.0-flash", "say hello world", "AIzaSyChgvHZjn1mLjBrJXv9OiZ4IHTkfOzGoxs", 1000)
-
-  console.log(IaText())
+  IaText("gemini-2.0-flash", "say hello world", "AIzaSyChgvHZjn1mLjBrJXv9OiZ4IHTkfOzGoxs", 1000)
 }
 main();
