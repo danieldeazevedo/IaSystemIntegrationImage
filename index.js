@@ -1,15 +1,26 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import fs from "fs";
 
-import { GoogleGenerativeAI } from "@google/generative-ai"
-import fs from 'fs';
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI("AIzaSyChgvHZjn1mLjBrJXv9OiZ4IHTkfOzGoxs");
 
 async function generateImage() {
-  const contents = "Hi, can you create a 3d rendered image of a pig " +
-                  "with wings and a top hat flying over a happy " +
-                  "futuristic scifi city with lots of greenery?";
+    // Load the image from the local file system
+    const imagePath = './IMG-20250316-WA0048.jpg';
+    const imageData = fs.readFileSync(imagePath);
+    const base64Image = imageData.toString('base64');
 
-  // Set responseModalities to include "Image" so the model can generate  an image
+    // Prepare the content parts
+    const contents = [
+        { text: "make a cat in this image" },
+        {
+          inlineData: {
+            mimeType: 'image/png',
+            data: base64Image
+          }
+        }
+      ];
+
+  // Set responseModalities to include "Image" so the model can generate an image
   const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash-exp-image-generation",
     generationConfig: {
