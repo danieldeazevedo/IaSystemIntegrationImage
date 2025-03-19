@@ -82,7 +82,28 @@ category: HarmCategory.HARM_CATEGORY_CIVIC_INTEGRITY,
     }
     }
 
+ async function generateHashtags(diretorio1) {
+    const prompt = null;
+    const model = genAI.getGenerativeModel({ model: 'models/gemini-1.5-pro' });
+
+
+    const imageData = fs.readFileSync(diretorio1);
+    const base64Image = imageData.toString('base64');
+     const result = await model.generateContent([
+    {
+        inlineData: {
+            data: base64Image,
+            mimeType: "image/png",
+        },
+    },
+    'Mencione (sem dizer mais nada) apenas que hashtags posso usar para postar essa foto no meu perfil e alcançar mais visualizações na minha postagem'
+]);
+    return console.log(result.response.text()); 
+ }
 //fazer gerar 4 imagens
   for (let a = 0; a < 4; a++) {
-generateImage(1,"image/get/[PATH_NAME_AQUI]", "image/imagetest/", "[NOME_DA_PATH_ESCOLHIDA]");
+generateImage(1,"image/get/[FILE_NAME_AQUI]", "image/imagetest/", "[NOME_DA_PATH_ESCOLHIDA]");
  }
+// fazer gerar hashtags 
+generateHashtags("image/get/[FILE_NAME_AQUI");
+
