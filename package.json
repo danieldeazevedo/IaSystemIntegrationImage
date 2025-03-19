@@ -13,6 +13,6 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
     "@types/node": "^18.0.6",
-    "nightback-ia-integration": "^2.5.1"
+    "nightback-ia-integration": "^2.0.1"
   }
 }
