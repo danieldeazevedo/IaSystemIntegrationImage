@@ -82,7 +82,7 @@ category: HarmCategory.HARM_CATEGORY_CIVIC_INTEGRITY,
     }
     }
 
- async function generateHashtags(diretorio1) {
+export async function generateHashtags(diretorio1) {
     const prompt = null;
     const model = genAI.getGenerativeModel({ model: 'models/gemini-1.5-pro' });
 
@@ -102,7 +102,7 @@ category: HarmCategory.HARM_CATEGORY_CIVIC_INTEGRITY,
  }
 //fazer gerar 4 imagens
   for (let a = 0; a < 4; a++) {
-generateImage(1,"image/get/[FILE_NAME_AQUI]", "image/imagetest/", "[NOME_DA_PATH_ESCOLHIDA]");
+generateImage(a,"image/get/[FILE_NAME_AQUI]", "image/imagetest/", "[NOME_DA_PATH_ESCOLHIDA]");
  }
 // fazer gerar hashtags 
 generateHashtags("image/get/[FILE_NAME_AQUI");
