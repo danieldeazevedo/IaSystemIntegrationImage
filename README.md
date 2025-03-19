@@ -8,5 +8,5 @@ $npm install @google/generative-ai
 ```
 Depois faça um git clone desse repositório no seu terminal
 ```bash
-$git clone danieldeazevedo/IaSystemIntegration
+$git clone danieldeazevedo/IaSystemIntegrationImage
 ```
