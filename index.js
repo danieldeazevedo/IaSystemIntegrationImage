@@ -13,7 +13,7 @@ export async function generateImage(i, diretorio1, diretorio2, imageName) {
 
     // Conteudo
     const contents = [
-        { text: "You see all the people in the picture as if they were adults. Nobody is a child or young person. Please enhance the given image by improving its details, clarity, and overall quality. Increase the resolution if possible, and sharpen the edges for better definition. Add depth and texture where needed, making colors more vibrant while maintaining a natural look. Adjust lighting and contrast for a more dynamic and visually appealing result.Focus on enhancing any specific elements that can benefit from more detail, such as textures, shadows, and highlights."},
+        { text: "Please enhance the given image by improving its details, clarity, and overall quality. Increase the resolution if possible, and sharpen the edges for better definition. Add depth and texture where needed, making colors more vibrant while maintaining a natural look. Adjust lighting and contrast for a more dynamic and visually appealing result.Focus on enhancing any specific elements that can benefit from more detail, such as textures, shadows, and highlights."},
         {
           inlineData: {
             mimeType: 'image/png',
