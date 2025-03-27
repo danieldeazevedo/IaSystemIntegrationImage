@@ -13,7 +13,8 @@ export async function generateImage(i, diretorio1, diretorio2, imageName) {
 
     // Conteudo
     const contents = [
-        { text: "Please enhance the given image by improving its details, clarity, and overall quality. Increase the resolution if possible, and sharpen the edges for better definition. Add depth and texture where needed, making colors more vibrant while maintaining a natural look. Adjust lighting and contrast for a more dynamic and visually appealing result.Focus on enhancing any specific elements that can benefit from more detail, such as textures, shadows, and highlights."},
+        { text: "Please enhance the given image by improving its details, clarity, and overall quality. Increase the resolution if possible, and sharpen the edges for better definition. Add depth and texture where needed, making colors more vibrant while maintaining a natural look. Adjust lighting and contrast for a more dynamic and visually appealing result.Focus on enhancing any specific elements that can benefit from more detail, such as textures, shadows, and highlights."
+        },
         {
           inlineData: {
             mimeType: 'image/png',
@@ -70,7 +71,7 @@ export async function generateImage(i, diretorio1, diretorio2, imageName) {
                 } else if (part.inlineData) {
                     const imageData = part.inlineData.data;
                     const buffer = Buffer.from(imageData, 'base64');
-                    fs.writeFileSync(diretorio2 +`${imageName} ${i}.jpg`, buffer);
+                    fs.writeFileSync(diretorio2 +`${imageName} ${i}.png`, buffer);
                     console.log('Imagem salva');
                 }
             }
@@ -82,6 +83,10 @@ export async function generateImage(i, diretorio1, diretorio2, imageName) {
         }
     } catch (error) {
         console.error("Error generating content:", error);
+        /*
+        var error_message = "Ocorreu um erro ao gerar seu conteudo... Tente novamente ou verifique se o conteudo carregado é seguro e não viola nenhuma diretriz do serviço"
+        return error_message;
+        */
     }
     }
 
