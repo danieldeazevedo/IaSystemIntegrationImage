@@ -1,12 +1,13 @@
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory} from "@google/generative-ai";
 import fs from "fs";
 
+//experimental
 const config = await import('./config.json', { assert: { type: 'json' } });
    const ApiKey = config.ApiKey;
 
 const genAI = new GoogleGenerativeAI(ApiKey);
 
-export async function generateImage(i, diretorio1, diretorio2, imageName) {
+export async function generateImage(i, diretorio1, diretorio2, imageName, mimeType) {
     //Pegar a imagem    
     const imageData = fs.readFileSync(diretorio1);
     const base64Image = imageData.toString('base64');
@@ -17,7 +18,7 @@ export async function generateImage(i, diretorio1, diretorio2, imageName) {
         },
         {
           inlineData: {
-            mimeType: 'image/png',
+            mimeType: mimeType,
             data: base64Image
           }
         }
@@ -90,7 +91,7 @@ export async function generateImage(i, diretorio1, diretorio2, imageName) {
     }
     }
 
-export async function generateHashtags(diretorio1) {
+export async function generateHashtags(diretorio1, mimeType) {
     const model = genAI.getGenerativeModel({ model: 'models/gemini-1.5-pro' });
 
 
@@ -100,7 +101,7 @@ export async function generateHashtags(diretorio1) {
     {
         inlineData: {
             data: base64Image,
-            mimeType: "image/png",
+            mimeType: mimeType,
         },
     },
     'Mencione (sem dizer mais nada) apenas que 4 hashtags posso usar para postar essa foto no meu perfil e alcançar mais visualizações na minha postagem'
@@ -112,8 +113,8 @@ export async function generateHashtags(diretorio1) {
  }
 //fazer gerar 4 imagens
   for (let a = 0; a < 4; a++) {
-generateImage(a,"image/get/[PATH_NAME_AQUI]", "image/imagetest/", "[NOME_DA_PATH_ESCOLHIDA]");
+generateImage(a,"image/get/[PATH_NAME_AQUI]", "image/imagetest/", "[NOME_DA_PATH_ESCOLHIDA]", "MIME_TYPE");
  }
 // fazer gerar hashtags 
-generateHashtags(diretorio1);
+generateHashtags("image/get/[PATH_NAME_AQUI]", "MIME_TYPE");
 
